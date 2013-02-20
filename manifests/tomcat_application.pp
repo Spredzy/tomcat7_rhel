@@ -10,7 +10,8 @@ define tomcat7_rhel::tomcat_application(
   $tomcat_admin_password = "s3cr3t",
   $jmx_registry_port = 10052,
   $jmx_server_port = 10051) {
-  include tomcat7_rhel
+
+  require tomcat7_rhel
 
   $application_dir = "$application_root/$application_name"
   $tomcat_log = "$application_dir/logs/catalina.out"

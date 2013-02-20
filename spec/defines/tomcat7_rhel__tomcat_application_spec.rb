@@ -4,6 +4,8 @@ describe 'tomcat7_rhel::tomcat_application' do
   context 'tomcat_manager = true' do
     let(:title) { 'my-app-with-tomcat-manager' }
 
+    let(:facts)  { {:osfamily => 'RedHat'}  }
+
     let(:params) {{
       :application_root => '/opt',
       :tomcat_user      => 'uzer',
@@ -55,6 +57,7 @@ describe 'tomcat7_rhel::tomcat_application' do
 
   context 'JMX support with default ports' do
     let(:title) { 'my-web-app' }
+    let(:facts)  { {:osfamily => 'RedHat'}  }
 
     let(:params) {{
       :application_root => '/opt',
@@ -71,6 +74,7 @@ describe 'tomcat7_rhel::tomcat_application' do
 
   context 'customising JMX' do
     let(:title) { 'my-web-app' }
+    let(:facts)  { {:osfamily => 'RedHat'}  }
 
     let(:params) {{
       :application_root => '/opt',
@@ -89,6 +93,7 @@ describe 'tomcat7_rhel::tomcat_application' do
 
   context 'Custom Tomcat control port' do
     let(:title) { 'my-web-app' }
+    let(:facts)  { {:osfamily => 'RedHat'}  }
 
     let(:params) {{
       :application_root => '/opt',
@@ -106,6 +111,7 @@ describe 'tomcat7_rhel::tomcat_application' do
 
   context 'minimal configuration' do
     let(:title) { 'my-web-app' }
+    let(:facts)  { {:osfamily => 'RedHat'}  }
 
     let(:params) {{
       :application_root => '/opt',

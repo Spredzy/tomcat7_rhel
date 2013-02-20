@@ -1,16 +1,18 @@
 class tomcat7_rhel {
-  include tomcat7_rhel::jpackage_repo
 
-  package { "java-1.7.0-openjdk":
-    ensure => latest
+  include tomcat7_rhel::params
+
+  if $::osfamily == 'RedHat' {
+    require jpackage
   }
-  package { "java-1.7.0-openjdk-devel":
+
+  package { $tomcat7_rhel::params::deps :
     ensure => latest,
-    require => Package["java-1.7.0-openjdk"]
+    before => Package['tomcat7'],
   }
 
-  package { "tomcat7":
+  package {'tomcat7':
     ensure => installed,
-    require => [Package['java-1.7.0-openjdk'], Yumrepo['jpackage']]
   }
+
 }

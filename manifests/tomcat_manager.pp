@@ -5,7 +5,15 @@ define tomcat7_rhel::tomcat_manager(
                                     $application_dir,
                                     $application_name,
                                     $tomcat_port) {
-  require tomcat7_rhel::tomcat7_manager_package
+  include tomcat7_rhel::params
+
+  File {
+    require => Package[$tomcat7_rhel::params::manager],
+  }
+
+  package {$tomcat7_rhel::params::manager:
+    ensure => installed,
+  }
 
   file { "$application_dir/conf/Catalina/localhost/manager.xml":
     content => template("tomcat7_rhel/manager.xml.erb"),
