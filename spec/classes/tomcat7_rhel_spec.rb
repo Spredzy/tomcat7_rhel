@@ -7,7 +7,7 @@ describe 'tomcat7_rhel' do
   context 'when Debian based' do
     let(:facts) { {:osfamily => 'Debian'} }
 
-    it 'install jpackage' do
+    it 'does not install jpackage' do
       should_not include_class('jpackage')
     end
 

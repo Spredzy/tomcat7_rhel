@@ -14,8 +14,6 @@ describe 'tomcat7_rhel::tomcat_application' do
       :jvm_envs         => '-Di_love_tomcat=true'
     }}
 
-    it { should include_class('tomcat7_rhel::tomcat7_manager_package') }
-
     it { should contain_package('tomcat7-admin-webapps') }
 
     it {
